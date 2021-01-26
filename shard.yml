@@ -1,0 +1,12 @@
+name: mt5crystal
+version: 0.1.0
+
+authors:
+  - José Eduardo Kroll <jkpenga@gmail.com>
+
+dependencies:
+  zeromq:
+    github: crystal-community/zeromq-crystal
+
+crystal: ">= 0.35.1"
+license: MIT
