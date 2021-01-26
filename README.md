@@ -1,5 +1,6 @@
 # MT5-CRYSTAL
-Crystal-lang based client for the MQL5-JSON-API ("khramkov")
+Crystal-lang based client for the MQL5-JSON-API ("khramkov").
+
 Client ported from examples from https://github.com/khramkov/MQL5-JSON-API
 
 ## Installation
