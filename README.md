@@ -18,7 +18,6 @@ dependencies:
 
 
 ```crystal
-require "zeromq"
 require "mt5crystal"
 ```
 
