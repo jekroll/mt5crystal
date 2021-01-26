@@ -1,5 +1,6 @@
 # TODO: Write documentation for `Mt5crystal`
 require "json"
+require "zeromq"
 
 module MT5API
     VERSION = "0.1.0"
