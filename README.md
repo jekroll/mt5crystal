@@ -8,10 +8,7 @@ Client ported from examples from https://github.com/khramkov/MQL5-JSON-API
 Add this to your application's `shard.yml`:
 
 ```yaml
-dependencies:
-  zeromq:
-    github: crystal-community/zeromq-crystal
-  
+dependencies: 
   mt5crystal:
     github: jekroll/mt5crystal
 ```
