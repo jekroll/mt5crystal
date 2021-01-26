@@ -27,6 +27,7 @@ require "mt5crystal"
 
 ```crystal
 # Subscribe and receive tick data
+api = MT5API::Client.new()
 socket = api.live_socket()
 
 @api.construct_and_send({
