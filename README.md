@@ -27,7 +27,7 @@ require "mt5crystal"
 api = MT5API::Client.new()
 socket = api.live_socket()
 
-@api.construct_and_send({
+api.construct_and_send({
     "action"  => "CONFIG",
     "symbol"  => "BTCEUR",
     "chartTF" => "TICK"
