@@ -86,7 +86,7 @@ module MT5API
         # Construct a request dictionary from default and send it to server
 
         def construct_and_send( kwargs )
-            request = {} of String => Nil | Int32 | Float64 | String
+            request = {} of String => Nil | Int32 | Float64 | String | Array( String | Int32 | Float64 )
 
             [   "action",
                 "actionType",
@@ -132,7 +132,7 @@ module MT5API
         # Construct a request dictionary from default and send it to server
 
         def indicator_construct_and_send( kwargs )
-            request = {} of String => Nil | Int32 | Float64 | String
+            request = {} of String => Nil | Int32 | Float64 | String | Array( String | Int32 | Float64 )
 
             [   "action",
                 "actionType",
@@ -169,7 +169,7 @@ module MT5API
         # Construct a request dictionary from default and send it to server
 
         def chart_data_construct_and_send ( kwargs )
-            request = {} of String => Nil | Int32 | Float64 | String
+            request = {} of String => Nil | Int32 | Float64 | String | Array( String | Int32 | Float64 )
 
             [   "action",
                 "actionType",
