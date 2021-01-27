@@ -3,7 +3,9 @@ require "json"
 require "zeromq"
 
 module MT5API
-    VERSION = "0.1.0.1"
+    VERSION = "0.1.0.2"
+    alias Jsonray = Array( Float64 | Int32 | String )
+    alias Jsonvar = Nil | Int32 | Float64 | String | Jsonray
 
     class Client
         @sys_socket            : ZMQ::Socket
@@ -86,7 +88,7 @@ module MT5API
         # Construct a request dictionary from default and send it to server
 
         def construct_and_send( kwargs )
-            request = {} of String => Nil | Int32 | Float64 | String | Array( String | Int32 | Float64 )
+            request = {} of String => Jsonvar
 
             [   "action",
                 "actionType",
@@ -112,9 +114,9 @@ module MT5API
             end
 
             # update dict values if exist
-            kwargs.each do |key, value|
+            kwargs.each_key do |key|
                 if request.has_key?( key )
-                    request[ key ] = value
+                    request[ key ] = kwargs[ key ].as( Jsonvar )
                 else
                     raise "Unknown key in **kwargs ERROR"
                 end
@@ -132,7 +134,7 @@ module MT5API
         # Construct a request dictionary from default and send it to server
 
         def indicator_construct_and_send( kwargs )
-            request = {} of String => Nil | Int32 | Float64 | String | Array( String | Int32 | Float64 )
+            request = {} of String => Jsonvar
 
             [   "action",
                 "actionType",
@@ -149,9 +151,13 @@ module MT5API
             end
 
             # update dict values if exist
-            kwargs.each do |key, value|
+            kwargs.each_key do |key|
                 if request.has_key?( key )
-                    request[ key ] = value
+                    begin
+                        request[ key ] = kwargs[ key ].as( Jsonvar )
+                    rescue
+                        puts kwargs.to_json
+                    end
                 else
                     raise "Unknown key in **kwargs ERROR"
                 end
@@ -169,7 +175,7 @@ module MT5API
         # Construct a request dictionary from default and send it to server
 
         def chart_data_construct_and_send ( kwargs )
-            request = {} of String => Nil | Int32 | Float64 | String | Array( String | Int32 | Float64 )
+            request = {} of String => Jsonvar
 
             [   "action",
                 "actionType",
@@ -181,9 +187,9 @@ module MT5API
             end
 
             # update dict values if exist
-            kwargs.each do |key, value|
-                if message.has_key?( key )
-                    message[ key ] = value
+            kwargs.each_key do |key|
+                if request.has_key?( key )
+                    request[ key ] = kwargs[ key ].as( Jsonvar )
                 else
                     raise "Unknown key in **kwargs ERROR"
                 end
